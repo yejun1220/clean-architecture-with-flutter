@@ -1,6 +1,7 @@
 import 'package:clean_architecture/data/api.dart';
 import 'package:clean_architecture/data/photo_provider.dart';
 import 'package:clean_architecture/ui/home_screen.dart';
+import 'package:clean_architecture/ui/home_view_model.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: PhotoProvider(
-        pixabayApi: PixabayApi(),
+        homeViewModel: HomeViewModel(PixabayApi()),
         child: const HomeScreen(),
       ),
     );

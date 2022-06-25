@@ -1,16 +1,15 @@
 import 'dart:async';
-import 'dart:math';
 
-import 'package:clean_architecture/data/api.dart';
+import 'package:clean_architecture/ui/home_view_model.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../model/Photo.dart';
 
 class PhotoProvider extends InheritedWidget {
-  final PixabayApi pixabayApi;
-  final _photoStreamController = StreamController<List<Photo>>()..add([]);
-  Stream<List<Photo>> get photoStream => _photoStreamController.stream;
-  PhotoProvider( {Key? key, required this.pixabayApi, required Widget child}) : super(key: key, child: child);
+
+  final HomeViewModel homeViewModel;
+
+  const PhotoProvider( {Key? key, required this.homeViewModel, required Widget child}) : super(key: key, child: child);
 
   static PhotoProvider of(BuildContext context) {
     final PhotoProvider? result = context.dependOnInheritedWidgetOfExactType<PhotoProvider>();
@@ -21,13 +20,9 @@ class PhotoProvider extends InheritedWidget {
     return result!;
   }
 
-  Future<void> fetch(String query) async {
-    final result = await pixabayApi.fetch(query);
-    _photoStreamController.add(result);
-  }
 
   @override
   bool updateShouldNotify(PhotoProvider oldWidget) {
-    return oldWidget.pixabayApi != pixabayApi;
+    return true;
   }
 }
