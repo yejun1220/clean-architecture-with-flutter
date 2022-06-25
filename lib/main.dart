@@ -1,3 +1,5 @@
+import 'package:clean_architecture/data/api.dart';
+import 'package:clean_architecture/data/photo_provider.dart';
 import 'package:clean_architecture/ui/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +17,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      home: PhotoProvider(
+        pixabayApi: PixabayApi(),
+        child: const HomeScreen(),
+      ),
     );
   }
 }
-
