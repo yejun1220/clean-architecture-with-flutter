@@ -55,7 +55,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 suffixIcon: IconButton(
                   onPressed: () async {
                     final photos = await fetch(_controller.text);
-                    _photos = photos;
+                    setState(() {
+                      _photos = photos;
+                    });
                   },
                   icon: const Icon(Icons.search),
                 ),
