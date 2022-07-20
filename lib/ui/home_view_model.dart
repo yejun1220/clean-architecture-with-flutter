@@ -1,18 +1,19 @@
 import 'dart:async';
 
-import '../data/api.dart';
+import 'package:clean_architecture/data/photo_api_repository.dart';
+
 import '../model/Photo.dart';
 
 class HomeViewModel {
-  final PixabayApi pixabayApi;
+  final PhotoApiRepository _photoApiRepository;
   final _photoStreamController = StreamController<List<Photo>>()..add([]);
 
   Stream<List<Photo>> get photoStream => _photoStreamController.stream;
 
-  HomeViewModel(this.pixabayApi);
+  HomeViewModel(this._photoApiRepository);
 
   Future<void> fetch(String query) async {
-    final result = await pixabayApi.fetch(query);
+    final result = await _photoApiRepository.fetch(query);
     _photoStreamController.add(result);
   }
 }

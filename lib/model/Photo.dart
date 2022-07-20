@@ -46,7 +46,7 @@ class Photo {
   late final String user;
   late final String userImageURL;
 
-  Photo.fromJson(Map<String, dynamic> json){
+  Photo.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     pageURL = json['pageURL'];
     type = json['type'];
@@ -96,5 +96,16 @@ class Photo {
     _data['user'] = user;
     _data['userImageURL'] = userImageURL;
     return _data;
+  }
+
+  @override
+  bool operator ==(Object other) => identical(this, other) || other is Photo && runtimeType == other.runtimeType && id == other.id;
+
+  @override
+  int get hashCode => id.hashCode;
+
+  @override
+  String toString() {
+    return 'Photo{id: $id}';
   }
 }

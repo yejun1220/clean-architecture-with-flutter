@@ -1,4 +1,4 @@
-import 'package:clean_architecture/data/api.dart';
+import 'package:clean_architecture/data/pixabay_api.dart';
 import 'package:clean_architecture/data/photo_provider.dart';
 import 'package:clean_architecture/ui/home_screen.dart';
 import 'package:clean_architecture/ui/home_view_model.dart';
