@@ -12,17 +12,18 @@ void main() {
       final viewModel = HomeViewModel(FakePhotoApiRepository());
 
       await viewModel.fetch('apple');
-      await viewModel.fetch('apple');
-      await viewModel.fetch('apple');
+      await viewModel.fetch('iphone');
+
+      final List<Photo> result = fakeJson.map((e) => Photo.fromJson(e)).toList();
+
       expect(
         // photoStream에 빈 리스트가 있다.
         viewModel.photoStream,
         emitsInOrder(
           [
-            isA<List<Photo>>(),
-            isA<List<Photo>>(),
-            isA<List<Photo>>(),
-            isA<List<Photo>>(),
+            equals([]),
+            equals(result),
+            equals(result),
           ],
         ),
       );
@@ -33,7 +34,7 @@ void main() {
 class FakePhotoApiRepository extends PhotoApiRepository {
   @override
   Future<List<Photo>> fetch(String query) async {
-    Future.delayed(const Duration(microseconds: 500));
+    // Future.delayed(const Duration(microseconds: 0));
 
     return fakeJson.map((e) => Photo.fromJson(e)).toList();
   }
