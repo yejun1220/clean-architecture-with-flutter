@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'Photo.dart';
+part of 'photo.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

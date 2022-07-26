@@ -3,13 +3,12 @@ import 'dart:async';
 import 'package:clean_architecture/ui/home_view_model.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../model/Photo.dart';
+import '../model/photo.dart';
 
 class PhotoProvider extends InheritedWidget {
-
   final HomeViewModel homeViewModel;
 
-  const PhotoProvider( {Key? key, required this.homeViewModel, required Widget child}) : super(key: key, child: child);
+  const PhotoProvider({Key? key, required this.homeViewModel, required Widget child}) : super(key: key, child: child);
 
   static PhotoProvider of(BuildContext context) {
     final PhotoProvider? result = context.dependOnInheritedWidgetOfExactType<PhotoProvider>();
@@ -19,7 +18,6 @@ class PhotoProvider extends InheritedWidget {
 
     return result!;
   }
-
 
   @override
   bool updateShouldNotify(PhotoProvider oldWidget) {

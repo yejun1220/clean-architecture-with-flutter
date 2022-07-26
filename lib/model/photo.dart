@@ -1,9 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'Photo.g.dart';
+part 'photo.g.dart';
+
 @JsonSerializable()
-class Photo extends Equatable{
+class Photo extends Equatable {
   final int id;
   final String tags;
   @JsonKey(name: "previewURL")
@@ -17,5 +18,4 @@ class Photo extends Equatable{
 
   @override
   List<Object?> get props => [id];
-
 }
