@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:clean_architecture/data/photo_api_repository.dart';
 
-import '../model/Photo.dart';
+import '../model/photo.dart';
 
 class HomeViewModel {
   final PhotoApiRepository _photoApiRepository;

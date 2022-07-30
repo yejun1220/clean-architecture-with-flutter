@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:clean_architecture/data/photo_api_repository.dart';
 
-import '../model/Photo.dart';
+import '../model/photo.dart';
 import 'package:http/http.dart' as http;
 
 class PixabayApi implements PhotoApiRepository {
@@ -19,4 +19,3 @@ class PixabayApi implements PhotoApiRepository {
     return hits.map((e) => Photo.fromJson(e)).toList();
   }
 }
-
