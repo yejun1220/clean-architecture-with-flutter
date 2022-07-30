@@ -17,7 +17,7 @@ void main() {
       final List<Photo> result = fakeJson.map((e) => Photo.fromJson(e)).toList();
 
       expect(
-        // photoStream에 빈 리스트가 있다.
+        // photoStr.eam에 빈 리스트가 있다.
         viewModel.photoStream,
         emitsInOrder(
           [

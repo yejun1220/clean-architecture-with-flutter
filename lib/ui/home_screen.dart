@@ -1,8 +1,8 @@
-import 'package:clean_architecture/data/photo_provider.dart';
 import 'package:clean_architecture/model/Photo.dart';
 import 'package:clean_architecture/ui/home_view_model.dart';
 import 'package:clean_architecture/ui/widget/photo_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final HomeViewModel homeViewModel = PhotoProvider.of(context).homeViewModel;
+    final HomeViewModel homeViewModel = context.watch<HomeViewModel>();
 
     return Scaffold(
       appBar: AppBar(
