@@ -1,5 +1,4 @@
 import 'package:clean_architecture/data/photo_api_repository.dart';
-import 'package:clean_architecture/data/pixabay_api.dart';
 import 'package:clean_architecture/model/photo.dart';
 import 'package:clean_architecture/ui/home_view_model.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -12,21 +11,13 @@ void main() {
       final viewModel = HomeViewModel(FakePhotoApiRepository());
 
       await viewModel.fetch('apple');
-      await viewModel.fetch('iphone');
 
       final List<Photo> result = fakeJson.map((e) => Photo.fromJson(e)).toList();
 
       expect(
-        // photoStr.eam에 빈 리스트가 있다.
-        viewModel.photoStream,
-        emitsInOrder(
-          [
-            equals([]),
-            equals(result),
-            equals(result),
-          ],
-        ),
-      );
+          // photoStr.eam에 빈 리스트가 있다.
+          viewModel.photos,
+          result);
     },
   );
 }
