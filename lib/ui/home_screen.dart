@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 suffixIcon: IconButton(
                   onPressed: () async {
-                    context.watch<HomeViewModel>().fetch(_controller.text);
+                    context.read<HomeViewModel>().fetch(_controller.text);
                   },
                   icon: const Icon(Icons.search),
                 ),
