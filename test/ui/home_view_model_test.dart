@@ -1,6 +1,6 @@
-import 'package:clean_architecture/data/photo_api_repository.dart';
-import 'package:clean_architecture/model/photo.dart';
-import 'package:clean_architecture/ui/home_view_model.dart';
+import 'package:clean_architecture/domain/repository/photo_api_repository.dart';
+import 'package:clean_architecture/domain/model/photo.dart';
+import 'package:clean_architecture/presentation/home/home_view_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -15,7 +15,7 @@ void main() {
       final List<Photo> result = fakeJson.map((e) => Photo.fromJson(e)).toList();
 
       expect(
-          // photoStr.eam에 빈 리스트가 있다.
+          // photoStream에 빈 리스트가 있다.
           viewModel.photos,
           result);
     },
