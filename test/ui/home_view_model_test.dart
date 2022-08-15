@@ -17,7 +17,7 @@ void main() {
 
       expect(
           // photoStream에 빈 리스트가 있다.
-          viewModel.photos,
+          viewModel.state.photos,
           result);
     },
   );
