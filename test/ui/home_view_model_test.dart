@@ -1,3 +1,4 @@
+import 'package:clean_architecture/data/data_source/result.dart';
 import 'package:clean_architecture/domain/repository/photo_api_repository.dart';
 import 'package:clean_architecture/domain/model/photo.dart';
 import 'package:clean_architecture/presentation/home/home_view_model.dart';
@@ -24,10 +25,10 @@ void main() {
 
 class FakePhotoApiRepository extends PhotoApiRepository {
   @override
-  Future<List<Photo>> fetch(String query) async {
+  Future<Result<List<Photo>>> fetch(String query) async {
     // Future.delayed(const Duration(microseconds: 0));
 
-    return fakeJson.map((e) => Photo.fromJson(e)).toList();
+    return Result.success(fakeJson.map((e) => Photo.fromJson(e)).toList());
   }
 }
 
