@@ -1,6 +1,7 @@
 import 'package:clean_architecture/data/data_source/result.dart';
 import 'package:clean_architecture/domain/repository/photo_api_repository.dart';
 import 'package:clean_architecture/domain/model/photo.dart';
+import 'package:clean_architecture/domain/use_case/get_photos_use_case.dart';
 import 'package:clean_architecture/presentation/home/home_view_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -9,7 +10,7 @@ void main() {
     'Stream이 잘 동작해야한다.',
     () async {
       // ui에 로직이 있었다면 HomeViewModel 테스트를 할 수 없었을 것이다.
-      final viewModel = HomeViewModel(FakePhotoApiRepository());
+      final viewModel = HomeViewModel(GetPhotosUseCase(FakePhotoApiRepository()));
 
       await viewModel.fetch('apple');
 
