@@ -1,4 +1,4 @@
-import 'package:clean_architecture/domain/model/photo.dart';
+import 'package:clean_architecture/image_search_app/domain/model/photo.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'home_state.freezed.dart';

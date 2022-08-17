@@ -1,7 +1,7 @@
-import 'package:clean_architecture/data/data_source/pixabay_api.dart';
-import 'package:clean_architecture/data/data_source/result.dart';
-import 'package:clean_architecture/domain/model/photo.dart';
-import 'package:clean_architecture/domain/repository/photo_api_repository.dart';
+import 'package:clean_architecture/image_search_app/data/data_source/pixabay_api.dart';
+import 'package:clean_architecture/image_search_app/data/data_source/result.dart';
+import 'package:clean_architecture/image_search_app/domain/model/photo.dart';
+import 'package:clean_architecture/image_search_app/domain/repository/photo_api_repository.dart';
 import 'package:http/http.dart' as http;
 
 class PhotoApiRepositoryImpl implements PhotoApiRepository {

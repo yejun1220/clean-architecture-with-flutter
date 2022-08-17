@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:clean_architecture/presentation/home/home_view_model.dart';
-import 'package:clean_architecture/presentation/home/components/photo_widget.dart';
+import 'package:clean_architecture/image_search_app/presentation/home/home_view_model.dart';
+import 'package:clean_architecture/image_search_app/presentation/home/components/photo_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

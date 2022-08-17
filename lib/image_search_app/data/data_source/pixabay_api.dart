@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:clean_architecture/data/data_source/result.dart';
+import 'package:clean_architecture/image_search_app/data/data_source/result.dart';
 import 'package:http/http.dart' as http;
 
 class PixabayApi {

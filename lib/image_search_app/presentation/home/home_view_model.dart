@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:clean_architecture/data/data_source/result.dart';
-import 'package:clean_architecture/domain/model/photo.dart';
-import 'package:clean_architecture/domain/use_case/get_photos_use_case.dart';
-import 'package:clean_architecture/presentation/home/home_state.dart';
-import 'package:clean_architecture/presentation/home/home_ui_event.dart';
+import 'package:clean_architecture/image_search_app/data/data_source/result.dart';
+import 'package:clean_architecture/image_search_app/domain/model/photo.dart';
+import 'package:clean_architecture/image_search_app/domain/use_case/get_photos_use_case.dart';
+import 'package:clean_architecture/image_search_app/presentation/home/home_state.dart';
+import 'package:clean_architecture/image_search_app/presentation/home/home_ui_event.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewModel with ChangeNotifier {

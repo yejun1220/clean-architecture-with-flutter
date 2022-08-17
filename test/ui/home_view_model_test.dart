@@ -1,8 +1,8 @@
-import 'package:clean_architecture/data/data_source/result.dart';
-import 'package:clean_architecture/domain/repository/photo_api_repository.dart';
-import 'package:clean_architecture/domain/model/photo.dart';
-import 'package:clean_architecture/domain/use_case/get_photos_use_case.dart';
-import 'package:clean_architecture/presentation/home/home_view_model.dart';
+import 'package:clean_architecture/image_search_app/data/data_source/result.dart';
+import 'package:clean_architecture/image_search_app/domain/repository/photo_api_repository.dart';
+import 'package:clean_architecture/image_search_app/domain/model/photo.dart';
+import 'package:clean_architecture/image_search_app/domain/use_case/get_photos_use_case.dart';
+import 'package:clean_architecture/image_search_app/presentation/home/home_view_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
