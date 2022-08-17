@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:clean_architecture/data/data_source/pixabay_api.dart';
 import 'package:clean_architecture/data/repository/photo_api_repository_impl.dart';
 import 'package:clean_architecture/domain/repository/photo_api_repository.dart';
