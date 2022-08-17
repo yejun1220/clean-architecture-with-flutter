@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     Future.microtask(
       () {
-        final viewModel = context.watch<HomeViewModel>();
+        final viewModel = context.read<HomeViewModel>();
         _subscription = viewModel.eventStream.listen(
           (event) {
             event.when(
