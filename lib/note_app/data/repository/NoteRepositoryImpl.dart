@@ -1,9 +1,9 @@
-import 'package:clean_architecture/note_app/data/data_source/note_db.dart';
+import 'package:clean_architecture/note_app/data/data_source/note_db_helper.dart';
 import 'package:clean_architecture/note_app/domain/model/note.dart';
 import 'package:clean_architecture/note_app/domain/repository/note_repository.dart';
 
 class NoteRepositoryImpl implements NoteRepository {
-  NoteDb db;
+  NoteDbHelper db;
 
   NoteRepositoryImpl(this.db);
 
@@ -24,7 +24,7 @@ class NoteRepositoryImpl implements NoteRepository {
 
   @override
   Future<void> insertNote(Note note) async {
-    return await db.inertNote(note);
+    return await db.insertNote(note);
   }
 
   @override

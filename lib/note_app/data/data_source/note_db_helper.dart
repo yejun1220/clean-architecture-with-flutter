@@ -2,10 +2,10 @@ import 'package:clean_architecture/note_app/domain/model/note.dart';
 import 'package:sqflite/sqflite.dart';
 
 // =SQL Helpers
-class NoteDb {
+class NoteDbHelper {
   Database db;
 
-  NoteDb(this.db);
+  NoteDbHelper(this.db);
 
   Future<Note?> getNoteById(int id) async {
     // SELECT * FROM note WHERE id = 1
@@ -23,7 +23,7 @@ class NoteDb {
     return json.map((e) => Note.fromJson(e)).toList();
   }
 
-  Future<void> inertNote(Note note) async {
+  Future<void> insertNote(Note note) async {
     await db.insert('note', note.toJson());
   }
 
