@@ -15,7 +15,10 @@ class _NotesScreenState extends State<NotesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Your note", style: TextStyle(fontSize: 30),),
+        title: const Text(
+          "Your note",
+          style: TextStyle(fontSize: 30),
+        ),
         actions: [
           IconButton(
             onPressed: () {},
@@ -30,12 +33,15 @@ class _NotesScreenState extends State<NotesScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: ListView(
-          children: [
-            NoteItem(note: Note(title: 'test', content: 'test', color: wisteria.value, timestamp: 1 ),)
-
-          ]
-        ),
+        child: ListView(children: [
+          NoteItem(
+            note: Note(
+                title: 'test',
+                content: 'test',
+                color: wisteria.value,
+                timestamp: 1),
+          ),
+        ]),
       ),
     );
   }

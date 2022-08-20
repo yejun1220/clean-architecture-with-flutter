@@ -37,7 +37,6 @@ class NotesViewModel with ChangeNotifier{
       await repository.insertNote(_recentlyDeletedNote!);
       _recentlyDeletedNote = null;
       _loadNotes();
-
     }
   }
 }
