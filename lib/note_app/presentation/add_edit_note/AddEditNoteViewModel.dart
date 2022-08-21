@@ -4,11 +4,11 @@ import 'package:clean_architecture/note_app/presentation/add_edit_note/add_edit_
 import 'package:flutter/material.dart';
 
 class AddEditNoteViewModel with ChangeNotifier {
-  final NoteRepository noteRepository;
+  final NoteRepository repository;
 
   int color = Colors.orange.value;
 
-  AddEditNoteViewModel(this.noteRepository);
+  AddEditNoteViewModel(this.repository);
 
   void onEvent(AddEditNoteEvent event) {
     event.when(changeColor: _changeColor, saveNote: _saveNote);
@@ -21,7 +21,7 @@ class AddEditNoteViewModel with ChangeNotifier {
 
   Future<void> _saveNote(int? id, String title, String content) async {
     if (id != null) {
-      await noteRepository.insertNote(
+      await repository.insertNote(
         Note(
           title: title,
           content: content,
@@ -30,7 +30,7 @@ class AddEditNoteViewModel with ChangeNotifier {
         ),
       );
     } else {
-      await noteRepository.updateNote(
+      await repository.updateNote(
         Note(
           id: id,
           title: title,
