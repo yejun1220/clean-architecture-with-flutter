@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:clean_architecture/note_app/domain/model/note.dart';
 import 'package:clean_architecture/note_app/domain/repository/note_repository.dart';
 import 'package:clean_architecture/note_app/presentation/notes/notes_event.dart';
@@ -14,7 +12,9 @@ class NotesViewModel with ChangeNotifier{
 
   Note? _recentlyDeletedNote;
 
-  NotesViewModel(this.repository);
+  NotesViewModel(this.repository) {
+    _loadNotes();
+  }
   
   void onEvent(NotesEvent event) {
     event.when(loadNotes: _loadNotes, deleteNote: _deleteNote, restoreNote: _restoreNote);

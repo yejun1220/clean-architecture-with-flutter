@@ -1,4 +1,3 @@
-import 'package:clean_architecture/image_search_app/di/provider_setup.dart';
 import 'package:clean_architecture/note_app/di/provider_setup.dart';
 import 'package:clean_architecture/note_app/presentation/notes/notes_screen.dart';
 import 'package:clean_architecture/note_app/presentation/ui/colors.dart';
