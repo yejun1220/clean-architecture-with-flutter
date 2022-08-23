@@ -25,13 +25,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-          primaryColor: Colors.white,
-          backgroundColor: darkGrey,
-          canvasColor: darkGrey,
-          floatingActionButtonTheme: Theme.of(context).floatingActionButtonTheme.copyWith(backgroundColor: lightBlue, foregroundColor: darkGrey),
-          appBarTheme: Theme.of(context).appBarTheme.copyWith(
-                backgroundColor: darkGrey,
-              )),
+        primaryColor: Colors.white,
+        backgroundColor: darkGrey,
+        canvasColor: darkGrey,
+        floatingActionButtonTheme: Theme.of(context).floatingActionButtonTheme.copyWith(
+              backgroundColor: lightBlue,
+              foregroundColor: darkGrey,
+            ),
+        appBarTheme: Theme.of(context).appBarTheme.copyWith(
+              backgroundColor: darkGrey,
+            ),
+        textTheme: Theme.of(context).textTheme.apply(
+              bodyColor: Colors.white,
+            ),
+      ),
       home: const NotesScreen(),
     );
   }

@@ -1,5 +1,7 @@
+import 'package:clean_architecture/note_app/domain/util/note_order.dart';
 import 'package:clean_architecture/note_app/presentation/add_edit_note/add_edit_note_screen.dart';
 import 'package:clean_architecture/note_app/presentation/notes/components/note_item.dart';
+import 'package:clean_architecture/note_app/presentation/notes/components/order_section.dart';
 import 'package:clean_architecture/note_app/presentation/notes/notes_event.dart';
 import 'package:clean_architecture/note_app/presentation/notes/notes_view_model.dart';
 import 'package:flutter/material.dart';
@@ -49,16 +51,20 @@ class _NotesScreenState extends State<NotesScreen> {
       ),
       body: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: ListView(
-            children: state.notes
+          child: ListView(children: [
+            OrderSection(
+                noteOrder: state.noteOrder,
+                onOrderChanged: (noteOrder) {
+                  viewModel.onEvent(NotesEvent.changeOrder(noteOrder));
+                }),
+            ...state.notes
                 .map((note) => GestureDetector(
                       onTap: () async {
                         bool? isSaved = await Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => AddEditNoteScreen(
-                                      note: note,
-                                    )));
+                              builder: (context) => AddEditNoteScreen(note: note),
+                            ));
 
                         if (isSaved != null && isSaved) {
                           viewModel.onEvent(const NotesEvent.loadNotes());
@@ -73,17 +79,15 @@ class _NotesScreenState extends State<NotesScreen> {
                               action: SnackBarAction(
                                 label: '취소',
                                 onPressed: () {
-                                  viewModel
-                                      .onEvent(NotesEvent.restoreNote(note));
+                                  viewModel.onEvent(NotesEvent.restoreNote(note));
                                 },
                               ),
                             );
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
+                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
                           }),
                     ))
                 .toList(),
-          )),
+          ])),
     );
   }
 }
