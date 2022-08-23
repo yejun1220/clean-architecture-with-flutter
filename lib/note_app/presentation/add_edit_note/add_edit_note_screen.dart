@@ -113,10 +113,17 @@ class _AddEditNoteScreenState extends State<AddEditNoteScreen> {
       width: 48,
       height: 48,
       decoration: BoxDecoration(
-          color: color,
-          shape: BoxShape.circle,
-          boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.2), blurRadius: 5.0, spreadRadius: 1.0)],
-          border: selected ? Border.all(color: Colors.black, width: 2.0) : null),
+        color: color,
+        shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 5.0,
+            spreadRadius: 1.0,
+          )
+        ],
+        border: selected ? Border.all(color: Colors.black, width: 2.0) : null,
+      ),
     );
   }
 }

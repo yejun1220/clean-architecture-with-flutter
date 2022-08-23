@@ -59,19 +59,21 @@ class _NotesScreenState extends State<NotesScreen> {
               child: state.isOrderSectionVisible
                   ? OrderSection(
                       noteOrder: state.noteOrder,
-                      onOrderChanged: (noteOrder) {
+                      onOrderChanged: (NoteOrder noteOrder) {
                         viewModel.onEvent(NotesEvent.changeOrder(noteOrder));
-                      })
+                      },
+                    )
                   : Container(),
             ),
             ...state.notes
                 .map((note) => GestureDetector(
                       onTap: () async {
                         bool? isSaved = await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => AddEditNoteScreen(note: note),
-                            ));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddEditNoteScreen(note: note),
+                          ),
+                        );
 
                         if (isSaved != null && isSaved) {
                           viewModel.onEvent(const NotesEvent.loadNotes());

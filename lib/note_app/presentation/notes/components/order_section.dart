@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class OrderSection extends StatelessWidget {
   final NoteOrder noteOrder;
-  final Function(NoteOrder) onOrderChanged;
+  final Function(NoteOrder noteOrder) onOrderChanged;
 
   const OrderSection({
     Key? key,

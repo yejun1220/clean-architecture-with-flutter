@@ -8,7 +8,7 @@ import 'package:clean_architecture/image_search_app/presentation/home/home_ui_ev
 import 'package:flutter/material.dart';
 
 class HomeViewModel with ChangeNotifier {
-  GetPhotosUseCase _getPhotosUseCase;
+  final GetPhotosUseCase _getPhotosUseCase;
 
   HomeState _state = HomeState([], false);
 
@@ -26,12 +26,15 @@ class HomeViewModel with ChangeNotifier {
 
     final Result<List<Photo>> result = await _getPhotosUseCase(query);
 
-    result.when(success: (photos) {
-      _state = state.copyWith(photos: photos);
-      notifyListeners();
-    }, error: (message) {
-      _eventController.add(HomeUiEvent.showSnackBar(message));
-    });
+    result.when(
+      success: (photos) {
+        _state = state.copyWith(photos: photos);
+        notifyListeners();
+      },
+      error: (message) {
+        _eventController.add(HomeUiEvent.showSnackBar(message));
+      },
+    );
     _state = state.copyWith(isLoading: false);
     notifyListeners();
   }
