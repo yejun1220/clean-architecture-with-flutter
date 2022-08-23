@@ -1,4 +1,3 @@
-
 import 'package:clean_architecture/note_app/domain/model/note.dart';
 import 'package:clean_architecture/note_app/domain/util/note_order.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -10,5 +9,6 @@ class NotesState with _$NotesState {
   factory NotesState({
     required List<Note> notes,
     required NoteOrder noteOrder,
-}) = _NotesState;
+    required bool isOrderSectionVisible,
+  }) = _NotesState;
 }
