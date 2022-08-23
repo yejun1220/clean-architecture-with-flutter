@@ -41,7 +41,7 @@ class _NotesScreenState extends State<NotesScreen> {
             ),
           );
 
-          if(isSaved != null && isSaved) {
+          if (isSaved != null && isSaved) {
             viewModel.onEvent(const NotesEvent.loadNotes());
           }
         },
@@ -50,7 +50,23 @@ class _NotesScreenState extends State<NotesScreen> {
       body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView(
-            children: state.notes.map((note) => NoteItem(note: note)).toList(),
+            children: state.notes
+                .map((note) => NoteItem(
+                    note: note,
+                    onDeleteTap: () {
+                      viewModel.onEvent(NotesEvent.deleteNote(note));
+                      final snackBar = SnackBar(
+                        content: Text('노트가 삭제되었습니다.'),
+                        action: SnackBarAction(
+                          label: '취소',
+                          onPressed: () {
+                            viewModel.onEvent(NotesEvent.restoreNote(note));
+                          },
+                        ),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }))
+                .toList(),
           )),
     );
   }
