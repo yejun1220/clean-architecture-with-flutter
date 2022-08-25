@@ -12,6 +12,7 @@ class NotesViewModel with ChangeNotifier {
   NotesState _state = NotesState(
     notes: [],
     noteOrder: const NoteOrder.date(OrderType.descending()),
+    isOrderSectionVisible: false,
   );
 
   NotesState get state => _state;
@@ -24,9 +25,12 @@ class NotesViewModel with ChangeNotifier {
 
   void onEvent(NotesEvent event) {
     event.when(
-        loadNotes: _loadNotes,
-        deleteNote: _deleteNote,
-        restoreNote: _restoreNote);
+      loadNotes: _loadNotes,
+      deleteNote: _deleteNote,
+      restoreNote: _restoreNote,
+      changeOrder: _changeOrder,
+      toggleOrderSection: _toggleOrderSection,
+    );
   }
 
   Future<void> _loadNotes() async {
@@ -47,5 +51,15 @@ class NotesViewModel with ChangeNotifier {
       _recentlyDeletedNote = null;
       _loadNotes();
     }
+  }
+
+  void _changeOrder(noteOrder) {
+    _state = _state.copyWith(noteOrder: noteOrder);
+    _loadNotes();
+  }
+
+  void _toggleOrderSection() {
+    _state = _state.copyWith(isOrderSectionVisible: !_state.isOrderSectionVisible);
+    notifyListeners();
   }
 }
