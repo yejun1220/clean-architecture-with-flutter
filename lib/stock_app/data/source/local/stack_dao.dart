@@ -14,10 +14,10 @@ class StackDao {
   Future<void> clearCompanyListings() async {
     await box.clear();
   }
-  
+
   // 검색
   Future<List<CompanyListingEntity>> search(String query) async {
     final List<CompanyListingEntity> companyListing = await box.get(StackDao.companyListing, defaultValue: []);
-    return companyListing.where((e) => e.name.toLowerCase().contains(query) || query.toUpperCase() == e.symbol).toList();
+    return companyListing.where((e) => e.name.toLowerCase().contains(query.toLowerCase()) || query.toUpperCase() == e.symbol).toList();
   }
 }
