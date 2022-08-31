@@ -8,7 +8,7 @@ class StockApi {
 
   StockApi(this.client);
 
-  Future<http.Response> getListings(String apiKey) async {
+  Future<http.Response> getCompanyListings({String apiKey = apiKey}) async {
     return await client.get(Uri.parse('${baseUrl}query?function=LISTING_STATUS&apiKey=$apiKey'));
   }
 }
