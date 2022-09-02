@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:clean_architecture/stock_app/presentation/company_listings/company_listings_event.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,7 @@ class CompanyListingsViewModel with ChangeNotifier {
         );
       },
       error: (e) {
-        print('리모트 에러: ' + e.toString());
+        log('리모트 에러: $e');
       },
     );
 
