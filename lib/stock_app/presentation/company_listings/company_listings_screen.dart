@@ -1,3 +1,4 @@
+import 'package:clean_architecture/stock_app/presentation/company_listings/company_listings_event.dart';
 import 'package:clean_architecture/stock_app/presentation/company_listings/company_listings_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,20 +17,23 @@ class CompanyListingsScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: TextField(
+                onChanged: (query) {
+                  viewModel.onEvent(CompanyListingsEvent.onSearchQueryChange(query));
+                },
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: Theme.of(context).colorScheme.primary,
                       width: 2.0,
                     ),
-                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                    borderRadius: const BorderRadius.all(Radius.circular(5.0)),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: Theme.of(context).colorScheme.primary,
                       width: 2.0,
                     ),
-                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                    borderRadius: const BorderRadius.all(Radius.circular(5.0)),
                   ),
                   labelText: '검색...',
                   labelStyle: TextStyle(color: Theme.of(context).colorScheme.secondary),
@@ -38,7 +42,9 @@ class CompanyListingsScreen extends StatelessWidget {
             ),
             Expanded(
               child: RefreshIndicator(
-                onRefresh: () async {},
+                onRefresh: () async {
+                  viewModel.onEvent(const CompanyListingsEvent.refreshCompanyListings());
+                },
                 child: ListView.builder(
                   itemCount: state.companies.length,
                   itemBuilder: (context, index) {
