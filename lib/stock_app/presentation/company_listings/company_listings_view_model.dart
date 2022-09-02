@@ -54,7 +54,7 @@ class CompanyListingsViewModel with ChangeNotifier {
   }
 
   void _onSearchQueryChange(String query) {
-    // debounce가 활성화 되어있으면(전에 onSearchQuerychange가 실행되었으면) debounce의 콜백함수가 실행되지 않는다.(cancel 한다.)
+    // debounce가 활성화 되어있으면(전에 onSearchQueryChange가 실행되었으면) debounce의 콜백함수가 실행되지 않는다.(cancel 한다.)
     _debounce?.cancel();
     _debounce = Timer(const Duration(milliseconds: 500), () {
       _getCompanyListings(query: query);
