@@ -11,8 +11,8 @@ class CompanyListingsState with _$CompanyListingsState {
     @Default([]) List<CompanyListing> companies,
     @Default(false) bool isLoading,
     @Default(false) bool isRefreshing,
-    @Default('false') String searchQuery,
-  }) = _CompanyListingState;
+    @Default('') String searchQuery,
+  }) = _CompanyListingsState;
 
   factory CompanyListingsState.fromJson(Map<String, Object?> json) => _$CompanyListingsStateFromJson(json);
 }
