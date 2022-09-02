@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:clean_architecture/stock_app/data/source/remote/dto/company_info_dto.dart';
 import 'package:http/http.dart' as http;
 
 class StockApi {
@@ -12,10 +15,13 @@ class StockApi {
     return await _client.get(Uri.parse('$baseUrl/query?function=LISTING_STATUS&apikey=$apiKey'));
   }
 
-  Future<http.Response> getCompanyInfo({
+  Future<CompanyInfoDto> getCompanyInfo({
     required String symbol,
     String apiKey = apiKey,
   }) async {
-    return await _client.get(Uri.parse('$baseUrl/query?function=OVERVIEW&symbol=$symbol&apikey=$apiKey'));
+    final response = await _client.get(Uri.parse('$baseUrl/query?function=OVERVIEW&symbol=$symbol&apikey=$apiKey'));
+
+    return CompanyInfoDto.fromJson(jsonDecode(response.body));
   }
+
 }
