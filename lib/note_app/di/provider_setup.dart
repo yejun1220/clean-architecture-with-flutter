@@ -1,5 +1,5 @@
 import 'package:clean_architecture/note_app/data/data_source/note_db_helper.dart';
-import 'package:clean_architecture/note_app/data/repository/NoteRepositoryImpl.dart';
+import 'package:clean_architecture/note_app/data/repository/note_repository_impl.dart';
 import 'package:clean_architecture/note_app/domain/repository/note_repository.dart';
 import 'package:clean_architecture/note_app/domain/use_case/add_note_use_case.dart';
 import 'package:clean_architecture/note_app/domain/use_case/delete_note_use_case.dart';
