@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:clean_architecture/stock_app/domain/repository/stock_repository.dart';
 import 'package:clean_architecture/stock_app/presentation/company_info/company_info_event.dart';
@@ -30,18 +31,34 @@ class CompanyInfoViewModel with ChangeNotifier {
       success: (companyInfo) {
         _state = _state.copyWith(
           companyInfo: companyInfo,
+          errorMessage: null,
+        );
+      },
+      error: (e) {
+        _state = _state.copyWith(
+          errorMessage: e.toString(),
+        );
+      },
+    );
+
+    final intraInfo = await _repository.getIntradayInfo(symbol);
+
+    intraInfo.when(
+      success: (intraInfo) {
+        _state = _state.copyWith(
+          stockInfo: intraInfo,
           isLoading: false,
           errorMessage: null,
         );
       },
       error: (e) {
         _state = _state.copyWith(
+          stockInfo: [],
           isLoading: false,
           errorMessage: e.toString(),
         );
       },
     );
-
     notifyListeners();
   }
 }

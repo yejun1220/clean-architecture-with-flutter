@@ -1,8 +1,10 @@
 import 'package:clean_architecture/stock_app/data/csv/company_listings_parser.dart';
+import 'package:clean_architecture/stock_app/data/csv/intraday_info_parser.dart';
 import 'package:clean_architecture/stock_app/data/source/local/stock_dao.dart';
 import 'package:clean_architecture/stock_app/data/source/remote/stock_api.dart';
 import 'package:clean_architecture/stock_app/domain/model/company_info.dart';
 import 'package:clean_architecture/stock_app/domain/model/company_listing.dart';
+import 'package:clean_architecture/stock_app/domain/model/intraday_info.dart';
 import 'package:clean_architecture/stock_app/domain/repository/stock_repository.dart';
 import 'package:clean_architecture/stock_app/util/result.dart';
 import 'package:clean_architecture/stock_app/data/mapper/company_mapper.dart';
@@ -10,7 +12,8 @@ import 'package:clean_architecture/stock_app/data/mapper/company_mapper.dart';
 class StockRepositoryImpl implements StockRepository {
   final StockApi _stockApi;
   final StockDao _stockDao;
-  final _parser = CompanyListingsParser();
+  final _companyListingsParser = CompanyListingsParser();
+  final _intradayInfoParser = IntradayInfoParser();
 
   StockRepositoryImpl(this._stockApi, this._stockDao);
 
@@ -29,7 +32,7 @@ class StockRepositoryImpl implements StockRepository {
     // 원격 API
     try {
       final response = await _stockApi.getCompanyListings();
-      final remoteListings = await _parser.parse(response.body);
+      final remoteListings = await _companyListingsParser.parse(response.body);
 
       await _stockDao.clearCompanyListings();
       await _stockDao.insertCompanyListings(remoteListings.map((e) => e.toCompanyListingEntity()).toList());
@@ -48,5 +51,16 @@ class StockRepositoryImpl implements StockRepository {
       return Result.error(Exception('회사 정보 로드 실패: $e'));
     }
 
+  }
+
+  @override
+  Future<Result<List<IntradayInfo>>> getIntradayInfo(String symbol) async {
+    try {
+      final response = await _stockApi.getIntradayInfo(symbol: symbol);
+      final remoteInfo = await _intradayInfoParser.parse(response.body);
+      return Result.success(remoteInfo);
+    } catch (e) {
+      return Result.error(Exception('intradayInfo 정보 로드 실패: $e'));
+    }
   }
 }
