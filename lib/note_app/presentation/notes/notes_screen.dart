@@ -71,7 +71,16 @@ class _NotesScreenState extends State<NotesScreen> {
                         bool? isSaved = await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => AddEditNoteScreen(note: note),
+                            builder: (context) {
+                              /** AddEditNoteViewModel 매번 생성 */
+                              // final repository = context.read<NoteRepositoryImpl>();
+                              //
+                              // return ChangeNotifierProvider(
+                              //   create: (_) => AddEditNoteViewModel(repository),
+                              //   child: AddEditNoteScreen(note: note),
+                              // );
+                              return AddEditNoteScreen(note: note);
+                            },
                           ),
                         );
 
