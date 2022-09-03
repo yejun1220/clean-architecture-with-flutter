@@ -1,6 +1,11 @@
+import 'package:clean_architecture/stock_app/data/repository/stock_repository_impl.dart';
+import 'package:clean_architecture/stock_app/domain/repository/stock_repository.dart';
+import 'package:clean_architecture/stock_app/presentation/company_info/company_info_screen.dart';
+import 'package:clean_architecture/stock_app/presentation/company_info/company_info_view_model.dart';
 import 'package:clean_architecture/stock_app/presentation/company_listings/company_listings_event.dart';
 import 'package:clean_architecture/stock_app/presentation/company_listings/company_listings_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 
 class CompanyListingsScreen extends StatelessWidget {
@@ -51,8 +56,22 @@ class CompanyListingsScreen extends StatelessWidget {
                     return Column(
                       children: [
                         ListTile(
-                          title: Text(state.companies[index].name),
-                        ),
+                            title: Text(state.companies[index].name),
+                            onTap: () {
+                              // final repository = context.read<StockRepositoryImpl>();
+                              final repository = GetIt.instance<StockRepository>();
+
+                              final symbol = state.companies[index].symbol;
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return ChangeNotifierProvider(
+                                    create: (_) => CompanyInfoViewModel(repository, symbol),
+                                    child: const CompanyInfoScreen(),
+                                  );
+                                }),
+                              );
+                            }),
                         Divider(color: Theme.of(context).colorScheme.secondary),
                       ],
                     );

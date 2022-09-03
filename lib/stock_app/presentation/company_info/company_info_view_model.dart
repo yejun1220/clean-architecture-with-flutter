@@ -10,7 +10,9 @@ class CompanyInfoViewModel with ChangeNotifier {
 
   var _state = const CompanyInfoState();
 
-  CompanyInfoViewModel(this._repository);
+  CompanyInfoViewModel(this._repository, String symbol) {
+    _loadCompanyInfo(symbol);
+  }
 
   CompanyInfoState get state => _state;
 
@@ -29,11 +31,13 @@ class CompanyInfoViewModel with ChangeNotifier {
         _state = _state.copyWith(
           companyInfo: companyInfo,
           isLoading: false,
+          errorMessage: null,
         );
       },
       error: (e) {
         _state = _state.copyWith(
           isLoading: false,
+          errorMessage: e.toString(),
         );
       },
     );
