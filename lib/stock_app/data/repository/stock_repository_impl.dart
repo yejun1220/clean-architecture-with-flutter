@@ -38,7 +38,7 @@ class StockRepositoryImpl implements StockRepository {
       await _stockDao.insertCompanyListings(remoteListings.map((e) => e.toCompanyListingEntity()).toList());
       return Result.success(remoteListings);
     } catch (e) {
-      return Result.error(Exception('데이터 로드 실패'));
+      return Result.error(Exception('데이터 로드 실패: $e'));
     }
   }
 

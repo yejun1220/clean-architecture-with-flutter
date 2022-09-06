@@ -1,4 +1,3 @@
-import 'package:clean_architecture/stock_app/domain/model/company_info.dart';
 import 'package:clean_architecture/stock_app/presentation/company_info/company_info_state.dart';
 import 'package:clean_architecture/stock_app/presentation/company_info/company_info_view_model.dart';
 import 'package:clean_architecture/stock_app/presentation/company_info/components/stock_chart.dart';
@@ -20,10 +19,6 @@ class CompanyInfoScreen extends StatelessWidget {
             if (state.errorMessage != null) Center(child: Text(state.errorMessage!)),
             if (state.isLoading) const Center(child: CircularProgressIndicator()),
             if (state.isLoading == false && state.errorMessage == null) _buildBody(context, state),
-
-            // if(state.companyInfo.)
-
-            // Text(state.companyInfo);
           ],
         ),
       ),
